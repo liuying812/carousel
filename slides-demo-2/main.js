@@ -1,5 +1,5 @@
 let n
-初始化()
+init()
 setInterval(()=>{
   makeLeave(getImage(n))
     .one('transitionend', (e)=>{
@@ -7,7 +7,7 @@ setInterval(()=>{
     })
   makeCurrent(getImage(n+1))
   n += 1
-},3000)
+},2000)
 
 
 function getImage(n){
@@ -24,7 +24,7 @@ function x(n){
   return n
 }
 
-function 初始化(){
+function init(){
   n = 1
   $(`.images > img:nth-child(${n})`).addClass('current')
     .siblings().addClass('enter')
