@@ -13,7 +13,7 @@ document.addEventListener('visibilitychange', function(){
   if(document.hidden){
       window.clearInterval(timer)
   }else{
-      setInterval(()=>{
+      timer = setInterval(()=>{
         makeLeave(getImage(n)).one('transitionend', (e)=>{
             makeEnter($(e.currentTarget))
           })
