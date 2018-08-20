@@ -6,7 +6,7 @@ let timer = setInterval(()=>{
     })
   makeCurrent(getImage(n+1))
   n += 1
-},2000)
+},3000)
 
 /*解决tab切换再返回该页面出现图片混乱，当用户看不见该页面时候把闹钟停掉，再回来的时候再执行*/
 document.addEventListener('visibilitychange', function(){
@@ -19,7 +19,7 @@ document.addEventListener('visibilitychange', function(){
           })
         makeCurrent(getImage(n+1))
         n += 1
-      },2000)
+      },3000)
   }
 })
 
