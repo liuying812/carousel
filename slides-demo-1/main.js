@@ -1,37 +1,28 @@
 let n
-初始化()
-setInterval(()=>{
-  makeLeave(getImage(n))
-    .one('transitionend', (e)=>{
+init()
+let timer = setInterval(()=>{
+  makeLeave(getImage(n)).one('transitionend', (e)=>{
       makeEnter($(e.currentTarget))
     })
   makeCurrent(getImage(n+1))
   n += 1
-},3000)
+},2000)
 
+/*解决tab切换再返回该页面出现图片混乱，当用户看不见该页面时候把闹钟停掉，再回来的时候再执行*/
+document.addEventListener('visibilitychange', function(){
+  if(document.hidden){
+      window.clearInterval(timer)
+  }else{
+      setInterval(()=>{
+        makeLeave(getImage(n)).one('transitionend', (e)=>{
+            makeEnter($(e.currentTarget))
+          })
+        makeCurrent(getImage(n+1))
+        n += 1
+      },2000)
+  }
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 下面可以不看
 
 function getImage(n){
   return $(`.images > img:nth-child(${x(n)})`)
@@ -47,7 +38,7 @@ function x(n){
   return n
 }
 
-function 初始化(){
+function init(){
   n = 1
   $(`.images > img:nth-child(${n})`).addClass('current')
     .siblings().addClass('enter')
